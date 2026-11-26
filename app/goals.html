@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hearth Ledger — Goals</title>
+<meta name="description" content="Track the household's savings goals: emergency fund, retirement and paying off the card — actual contributions kept separate from the plan.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">Hearth Ledger<small>Household budget, kept calm</small></div>
+    <p class="side-note">Example household — November 2026, as of Nov 18. Two adults, one child. All figures in USD, take-home pay.</p>
+    <nav aria-label="Main">
+      <a href="index.html">Overview<span class="nav-sub">Money in, out &amp; left</span></a>
+      <a href="budget.html">Budget<span class="nav-sub">Plan every dollar</span></a>
+      <a href="transactions.html">Transactions<span class="nav-sub">Every dollar spent</span></a>
+      <a href="goals.html" class="active">Goals<span class="nav-sub">Savings, month by month</span></a>
+      <a href="debt.html">Debt<span class="nav-sub">Pay the card off</span></a>
+    </nav>
+    <p class="side-foot">Contributions you actually made are kept apart from what the plan says — so the goal never pretends.</p>
+  </aside>
+  <main>
+    <div class="wrap">
+      <header class="page-head">
+        <p class="eyebrow">November 2026 · as of Nov 18</p>
+        <h1>Goals</h1>
+        <p class="lede">Slow money, on purpose. Each goal shows what is actually saved, what the plan contributes each month, and the month it should finish at that pace. Record a real contribution — never just the plan — and the finish date moves.</p>
+      </header>
+
+      <div class="grid grid-3" id="goal-stats" aria-label="Goals at a glance"></div>
+
+      <div id="goal-cards" style="margin-top:16px"></div>
+
+      <section class="card" style="margin-top:16px">
+        <h2>How much do I need each month?</h2>
+        <p>Pick a goal and a finish date. Hearth Ledger works out the monthly amount — and says plainly when the date is out of reach at the planned pace.</p>
+        <div class="form-row-3">
+          <div><label for="plan-goal">Goal</label><select id="plan-goal"></select></div>
+          <div><label for="plan-months">Finish in (months)</label><input type="number" id="plan-months" min="1" max="120" step="1" value="15"></div>
+          <div><label>&nbsp;</label><button type="button" id="btn-plan" style="width:100%">Work it out</button></div>
+        </div>
+        <p class="notice hidden" id="plan-result" role="status"></p>
+      </section>
+
+      <footer class="page-foot">
+        Hearth Ledger — an original example site. <a href="index.html">Overview</a> · <a href="budget.html">Budget</a> · <a href="transactions.html">Transactions</a> · <a href="debt.html">Debt</a>
+      </footer>
+    </div>
+  </main>
+</div>
+<nav class="bottomnav" aria-label="Main">
+  <a href="index.html">Overview</a>
+  <a href="budget.html">Budget</a>
+  <a href="transactions.html">Transactions</a>
+  <a href="goals.html" class="active">Goals</a>
+  <a href="debt.html">Debt</a>
+</nav>
+<script type="module" src="js/goals.js"></script>
+</body>
+</html>

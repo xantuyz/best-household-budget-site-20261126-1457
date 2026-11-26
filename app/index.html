@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hearth Ledger — Household Budget Overview</title>
+<meta name="description" content="Hearth Ledger: one household's November 2026 budget — income, spending, savings and debt, all from a single example dataset.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">Hearth Ledger<small>Household budget, kept calm</small></div>
+    <p class="side-note">Example household — November 2026, as of Nov 18. Two adults, one child. All figures in USD, take-home pay.</p>
+    <nav aria-label="Main">
+      <a href="index.html" class="active">Overview<span class="nav-sub">Money in, out &amp; left</span></a>
+      <a href="budget.html">Budget<span class="nav-sub">Plan every dollar</span></a>
+      <a href="transactions.html">Transactions<span class="nav-sub">Every dollar spent</span></a>
+      <a href="goals.html">Goals<span class="nav-sub">Savings, month by month</span></a>
+      <a href="debt.html">Debt<span class="nav-sub">Pay the card off</span></a>
+    </nav>
+    <p class="side-foot">Data stays in this browser (localStorage). Export it any time from the Data &amp; backup card below.</p>
+  </aside>
+  <main>
+    <div class="wrap">
+      <header class="page-head">
+        <p class="eyebrow">November 2026 · as of Nov 18</p>
+        <h1>Overview</h1>
+        <p class="lede">One page, one truth: <strong>$6,200</strong> came in, <strong>$3,940</strong> has been spent, <strong>$1,600</strong> is set aside — so <strong>$660 remains</strong> for the rest of November. Savings transfers are not spending; they are counted once, as set-aside money.</p>
+      </header>
+
+      <div class="grid grid-4" id="stat-cards" aria-label="Month at a glance"></div>
+
+      <div class="callout" id="available-callout" role="status"></div>
+
+      <div class="grid grid-2" style="margin-top:16px">
+        <section class="card">
+          <h2>Planned vs. spent so far</h2>
+          <div id="plan-chart"></div>
+          <p class="chart-note" id="plan-note"></p>
+        </section>
+        <section class="card">
+          <h2>Emergency fund</h2>
+          <p><span class="stat-value small num" id="ef-value"></span></p>
+          <div class="bar-track" aria-hidden="true"><div class="bar-fill" id="ef-bar"></div></div>
+          <div class="progress-row"><span id="ef-progress"></span><span id="ef-left"></span></div>
+          <p class="hint">Target $12,420 — three months of essentials. $600 a month, 15 contributions to go. <a href="goals.html">See the goal →</a></p>
+          <h3 style="margin-top:16px">Next steps</h3>
+          <ul id="next-steps" style="margin:0;padding-left:20px"></ul>
+        </section>
+      </div>
+
+      <div class="grid grid-2" style="margin-top:16px">
+        <section class="card">
+          <h2>Where the money went</h2>
+          <div id="top-spending"></div>
+          <p class="hint"><a href="transactions.html">See all 23 transactions →</a></p>
+        </section>
+        <section class="card">
+          <h2>50 / 30 / 20 check</h2>
+          <div id="split-mini"></div>
+          <p class="hint" id="split-note"></p>
+          <p><a href="budget.html">Open the budget planner →</a></p>
+        </section>
+      </div>
+
+      <section class="card" style="margin-top:16px" id="backup">
+        <h2>Data &amp; backup</h2>
+        <p>Everything on this site lives in one dataset in this browser. Export a copy before you reset, import a backup to restore it, or reset back to the November example.</p>
+        <div class="toolbar">
+          <button type="button" id="btn-export">Export backup (JSON)</button>
+          <button type="button" class="btn-secondary" id="btn-import">Import backup…</button>
+          <input type="file" id="file-import" accept="application/json,.json" class="hidden" aria-label="Choose a backup file">
+          <button type="button" class="btn-danger" id="btn-reset">Reset to the example</button>
+        </div>
+        <p class="notice hidden" id="backup-notice" role="status"></p>
+        <p class="hint">Reset asks first, and reminds you to export. Import checks the file is a Hearth Ledger backup before it replaces anything.</p>
+      </section>
+
+      <footer class="page-foot">
+        Hearth Ledger — an original example site. Figures are an example household's November 2026 budget, as of Nov 18. <a href="budget.html">Budget</a> · <a href="transactions.html">Transactions</a> · <a href="goals.html">Goals</a> · <a href="debt.html">Debt</a>
+      </footer>
+    </div>
+  </main>
+</div>
+<nav class="bottomnav" aria-label="Main">
+  <a href="index.html" class="active">Overview</a>
+  <a href="budget.html">Budget</a>
+  <a href="transactions.html">Transactions</a>
+  <a href="goals.html">Goals</a>
+  <a href="debt.html">Debt</a>
+</nav>
+<script type="module" src="js/overview.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hearth Ledger — Budget Planner</title>
+<meta name="description" content="Plan every dollar of the household's November 2026 income: edit categories, watch the unallocated total, and check the 50/30/20 split live.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">Hearth Ledger<small>Household budget, kept calm</small></div>
+    <p class="side-note">Example household — November 2026, as of Nov 18. Two adults, one child. All figures in USD, take-home pay.</p>
+    <nav aria-label="Main">
+      <a href="index.html">Overview<span class="nav-sub">Money in, out &amp; left</span></a>
+      <a href="budget.html" class="active">Budget<span class="nav-sub">Plan every dollar</span></a>
+      <a href="transactions.html">Transactions<span class="nav-sub">Every dollar spent</span></a>
+      <a href="goals.html">Goals<span class="nav-sub">Savings, month by month</span></a>
+      <a href="debt.html">Debt<span class="nav-sub">Pay the card off</span></a>
+    </nav>
+    <p class="side-foot">Edits save in this browser automatically and show up on Overview at once.</p>
+  </aside>
+  <main>
+    <div class="wrap">
+      <header class="page-head">
+        <p class="eyebrow">November 2026 · as of Nov 18</p>
+        <h1>Budget planner</h1>
+        <p class="lede">Give every dollar a job before the month begins. Edit any amount or name, add a category, remove one you no longer need. The totals update as you type, and everything saves in this browser.</p>
+      </header>
+
+      <div class="grid grid-4" id="budget-stats" aria-label="Budget totals"></div>
+      <div class="callout hidden" id="over-callout" role="alert"></div>
+
+      <section class="card" style="margin-top:16px">
+        <h2>Income — take-home pay</h2>
+        <div id="income-list"></div>
+        <div class="kv"><span class="k">Total income</span><span class="v num" id="income-total"></span></div>
+        <p class="hint">Edit a salary and the unallocated total updates at once.</p>
+      </section>
+
+      <div id="group-sections"></div>
+
+      <section class="card" style="margin-top:16px">
+        <h2>Add a category</h2>
+        <form id="add-form">
+          <div class="form-row-3">
+            <div><label for="new-name">Category name</label><input type="text" id="new-name" maxlength="40" placeholder="e.g. School lunches" required></div>
+            <div><label for="new-group">Group</label>
+              <select id="new-group"><option value="essential">Essentials</option><option value="fun">Everyday joys</option><option value="saving">Saving &amp; extra debt payoff</option></select>
+            </div>
+            <div><label for="new-amount">Planned amount ($)</label><input type="number" id="new-amount" min="0" step="1" value="0" required></div>
+          </div>
+          <div class="toolbar"><button type="submit">Add category</button></div>
+        </form>
+        <p class="notice hidden" id="add-notice" role="status"></p>
+      </section>
+
+      <section class="card" style="margin-top:16px">
+        <h2>50 / 30 / 20 analyser — live</h2>
+        <p class="lede">A guide, not a verdict. The minimum debt payment counts as essential; extra payoff counts with saving.</p>
+        <div id="split-chart"></div>
+        <div id="split-rows"></div>
+        <p class="chart-note" id="split-verdict"></p>
+      </section>
+
+      <footer class="page-foot">
+        Hearth Ledger — an original example site. <a href="index.html">Overview</a> · <a href="transactions.html">Transactions</a> · <a href="goals.html">Goals</a> · <a href="debt.html">Debt</a>
+      </footer>
+    </div>
+  </main>
+</div>
+<nav class="bottomnav" aria-label="Main">
+  <a href="index.html">Overview</a>
+  <a href="budget.html" class="active">Budget</a>
+  <a href="transactions.html">Transactions</a>
+  <a href="goals.html">Goals</a>
+  <a href="debt.html">Debt</a>
+</nav>
+<script type="module" src="js/budget.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hearth Ledger — Transactions</title>
+<meta name="description" content="Every dollar the household spent in November 2026 through Nov 18: search, filter, add, edit and undo transactions.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">Hearth Ledger<small>Household budget, kept calm</small></div>
+    <p class="side-note">Example household — November 2026, as of Nov 18. Two adults, one child. All figures in USD, take-home pay.</p>
+    <nav aria-label="Main">
+      <a href="index.html">Overview<span class="nav-sub">Money in, out &amp; left</span></a>
+      <a href="budget.html">Budget<span class="nav-sub">Plan every dollar</span></a>
+      <a href="transactions.html" class="active">Transactions<span class="nav-sub">Every dollar spent</span></a>
+      <a href="goals.html">Goals<span class="nav-sub">Savings, month by month</span></a>
+      <a href="debt.html">Debt<span class="nav-sub">Pay the card off</span></a>
+    </nav>
+    <p class="side-foot">Add a transaction and Overview, Budget and the category totals update at once.</p>
+  </aside>
+  <main>
+    <div class="wrap">
+      <header class="page-head">
+        <p class="eyebrow">November 2026 · through Nov 18</p>
+        <h1>Transactions</h1>
+        <p class="lede">Every dollar spent so far this month, in one ledger. Search by merchant, filter by category, add what you spent — and undo a mistake in one tap.</p>
+      </header>
+
+      <div class="grid grid-4" id="tx-stats" aria-label="Spending totals"></div>
+
+      <section class="card" style="margin-top:16px">
+        <h2>Add a transaction</h2>
+        <form id="tx-form">
+          <div class="form-row-3">
+            <div><label for="f-date">Date</label><input type="date" id="f-date" value="2026-11-18" min="2026-11-01" max="2026-11-30" required></div>
+            <div><label for="f-merchant">Merchant</label><input type="text" id="f-merchant" maxlength="60" placeholder="e.g. GreenMart" required></div>
+            <div><label for="f-amount">Amount ($)</label><input type="number" id="f-amount" min="0.01" step="0.01" placeholder="0.00" required></div>
+          </div>
+          <div class="form-row">
+            <div><label for="f-category">Category</label><select id="f-category"></select></div>
+            <div><label for="f-note">Note (optional)</label><input type="text" id="f-note" maxlength="80" placeholder="What was it for?"></div>
+          </div>
+          <div class="toolbar"><button type="submit" id="tx-submit">Add transaction</button><button type="button" class="btn-secondary hidden" id="tx-cancel">Cancel edit</button></div>
+        </form>
+        <p class="notice hidden" id="tx-notice" role="status"></p>
+      </section>
+
+      <section class="card" style="margin-top:16px">
+        <h2>Ledger</h2>
+        <div class="toolbar">
+          <div class="field"><label for="q">Search merchant or note</label><input type="text" id="q" placeholder="Search…"></div>
+          <div class="field"><label for="f-filter">Category</label><select id="f-filter"><option value="">All categories</option></select></div>
+          <button type="button" class="btn-secondary" id="btn-undo" disabled>Undo last change</button>
+        </div>
+        <p class="hint" id="tx-count"></p>
+        <ul class="tx-list" id="tx-list"></ul>
+        <p class="notice hidden" id="tx-empty">No transactions match. Try a different search, or add one above.</p>
+        <h3 style="margin-top:18px">Spending by category</h3>
+        <div id="tx-by-cat"></div>
+      </section>
+
+      <footer class="page-foot">
+        Hearth Ledger — an original example site. <a href="index.html">Overview</a> · <a href="budget.html">Budget</a> · <a href="goals.html">Goals</a> · <a href="debt.html">Debt</a>
+      </footer>
+    </div>
+  </main>
+</div>
+<nav class="bottomnav" aria-label="Main">
+  <a href="index.html">Overview</a>
+  <a href="budget.html">Budget</a>
+  <a href="transactions.html" class="active">Transactions</a>
+  <a href="goals.html">Goals</a>
+  <a href="debt.html">Debt</a>
+</nav>
+<script type="module" src="js/transactions.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hearth Ledger — Debt Payoff</title>
+<meta name="description" content="Pay off the household's Everyday Card: compare paying only the minimum with a chosen monthly payment — months to payoff, total interest, interest saved.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">Hearth Ledger<small>Household budget, kept calm</small></div>
+    <p class="side-note">Example household — November 2026, as of Nov 18. Two adults, one child. All figures in USD, take-home pay.</p>
+    <nav aria-label="Main">
+      <a href="index.html">Overview<span class="nav-sub">Money in, out &amp; left</span></a>
+      <a href="budget.html">Budget<span class="nav-sub">Plan every dollar</span></a>
+      <a href="transactions.html">Transactions<span class="nav-sub">Every dollar spent</span></a>
+      <a href="goals.html">Goals<span class="nav-sub">Savings, month by month</span></a>
+      <a href="debt.html" class="active">Debt<span class="nav-sub">Pay the card off</span></a>
+    </nav>
+    <p class="side-foot">Interest is charged monthly on the balance at the start of the month; the payment lands at month end.</p>
+  </aside>
+  <main>
+    <div class="wrap">
+      <header class="page-head">
+        <p class="eyebrow">November 2026 · as of Nov 18</p>
+        <h1>Debt payoff</h1>
+        <p class="lede">One card, one plan. The <strong>Everyday Card</strong> owes <strong>$4,800</strong> at <strong>18% APR</strong>. The $250 minimum is already recorded for November; the budget adds $400 extra, so the planned payment is <strong>$650 a month</strong>. See what that extra $400 actually buys.</p>
+      </header>
+
+      <div class="grid grid-4" id="debt-stats" aria-label="Debt at a glance"></div>
+
+      <section class="card" style="margin-top:16px">
+        <h2>Your payment plan</h2>
+        <form id="debt-form">
+          <div class="form-row-3">
+            <div><label for="d-balance">Balance owed ($)</label><input type="number" id="d-balance" min="0" step="1" value="4800"></div>
+            <div><label for="d-apr">APR (% per year)</label><input type="number" id="d-apr" min="0" max="60" step="0.1" value="18"></div>
+            <div><label for="d-payment">Monthly payment ($)</label><input type="number" id="d-payment" min="0" step="1" value="650"></div>
+          </div>
+          <div class="toolbar"><button type="submit">Recalculate payoff</button><button type="button" class="btn-secondary" id="btn-min">Minimum only ($250)</button><button type="button" class="btn-secondary" id="btn-plan">Planned $650</button></div>
+        </form>
+        <p class="hint">Next payment due <strong>Dec 1, 2026</strong>. Interest each month = balance × APR ÷ 12. The last payment is only what is still owed — never more.</p>
+        <p class="notice warn hidden" id="debt-warning" role="alert"></p>
+      </section>
+
+      <div class="grid grid-2" style="margin-top:16px">
+        <section class="card">
+          <h2>Minimum only — $250 a month</h2>
+          <div id="min-result"></div>
+        </section>
+        <section class="card">
+          <h2>Your payment — <span id="your-pay-label">$650</span> a month</h2>
+          <div id="your-result"></div>
+        </section>
+      </div>
+
+      <section class="card" style="margin-top:16px">
+        <h2>Balance over time — your payment</h2>
+        <div id="debt-chart"></div>
+        <p class="chart-note" id="debt-chart-note"></p>
+      </section>
+
+      <section class="card" style="margin-top:16px">
+        <h2>Payoff schedule — your payment</h2>
+        <p class="hint">Month-by-month: interest charged, payment made, balance left. The final month is a partial payment.</p>
+        <div style="overflow-x:auto">
+        <table class="responsive" id="schedule-table">
+          <thead><tr><th>Month</th><th class="amt">Interest</th><th class="amt">Payment</th><th class="amt">Balance left</th></tr></thead>
+          <tbody id="schedule-body"></tbody>
+        </table>
+        </div>
+        <p class="notice hidden" id="schedule-empty">No schedule yet — the payment is too small to cover the interest, so the balance never falls. Raise the payment above the monthly interest.</p>
+      </section>
+
+      <footer class="page-foot">
+        Hearth Ledger — an original example site. <a href="index.html">Overview</a> · <a href="budget.html">Budget</a> · <a href="transactions.html">Transactions</a> · <a href="goals.html">Goals</a>
+      </footer>
+    </div>
+  </main>
+</div>
+<nav class="bottomnav" aria-label="Main">
+  <a href="index.html">Overview</a>
+  <a href="budget.html">Budget</a>
+  <a href="transactions.html">Transactions</a>
+  <a href="goals.html">Goals</a>
+  <a href="debt.html" class="active">Debt</a>
+</nav>
+<script type="module" src="js/debt.js"></script>
+</body>
+</html>
