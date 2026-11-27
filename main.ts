@@ -10,7 +10,7 @@
 // Run it locally with:
 //   mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 
-import { cpSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { copyFileSync, cpSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildDossier } from './vendor/makefun-frontend.ts';
@@ -21,7 +21,13 @@ const out = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 mkdirSync(out, { recursive: true });
 cpSync(join(here, 'app'), join(out, 'app'), { recursive: true });
 mkdirSync(join(out, 'screenshots'), { recursive: true });
-if (existsSync(join(here, 'screenshots'))) cpSync(join(here, 'screenshots'), join(out, 'screenshots'), { recursive: true });
+// Copy only the four named screenshots, never a recursive copy of the folder:
+// the grader rejects any output path that is not a plain relative name, so a
+// stray dotfile in the repo (e.g. screenshots/.gitkeep) must never reach /output.
+for (const shot of ['1-overview.jpg', '2-budget.jpg', '3-transactions-phone.jpg', '4-debt.jpg']) {
+  const src = join(here, 'screenshots', shot);
+  if (existsSync(src)) copyFileSync(src, join(out, 'screenshots', shot));
+}
 
 // The scorer's own caps: at most 4 screenshots, each at most 256 KiB; app/ at most
 // 993 files and directories and 16 MiB in all; the dossier text at most 160 KiB.
